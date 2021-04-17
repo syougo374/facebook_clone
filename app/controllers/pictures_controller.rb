@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[ show edit update destroy ]
+  # skip_before_action :login_required, only: [:new, :create]
+
 
   def index
     @pictures = Picture.all
@@ -17,6 +19,8 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    # @user = User.new(current_user.id)
+    
     respond_to do |format|
       if @picture.save
         format.html { redirect_to @picture, notice: "Picture was successfully created." }
