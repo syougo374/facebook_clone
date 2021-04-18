@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="image_field">
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
 
-  <div class="field">
+  <div class="content_field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions_field">
+    <%= form.submit "投稿する" %>
   </div>
 <% end %>

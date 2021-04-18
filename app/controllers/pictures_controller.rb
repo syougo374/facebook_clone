@@ -7,9 +7,6 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
   end
 
-  def show
-  end
-
   def new
     @picture = Picture.new
   end

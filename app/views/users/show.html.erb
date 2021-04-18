@@ -1,3 +1,5 @@
-<h1><%= @user.name %>のページ</h1>
+
 <p>メールアドレス: <%= @user.email %></p>
-<%= link_to "新規投稿ページ", new_picture_path %>
+<div class="btn-group" role="group" aria-label="...">
+<button type="button" class="btn btn-default"><%= link_to "新規投稿ページ", new_picture_path %></button>
+</div>
