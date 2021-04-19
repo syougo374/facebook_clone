@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FacebookClone</title>
+    <title>RailsAssignment2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <div class = "container"> 
-      <header>
+    <header class="header">
+      <h1 id="head_title">Facebook Clone</h1>
+      <div class="menu">
         <% if logged_in? %>
-        <ul class="nav nav-tabs">
-            <li  role="presentation"><%= link_to "Home", pictures_path %></li>
-            <li  role="presentation"><%= link_to "Profile", user_path(current_user.id) %></li>
-            <li  role="presentation"><%= link_to "Logout", session_path(current_user.id), method: :delete %> </li>
-        </ul>
-            <p class = "user_name">ユーザー名:<%= current_user.name %></p>  
+          <%= link_to 'Home', pictures_path, class: 'links' %>
+          <%= link_to "Profile", user_path(current_user.id), class: 'links' %>
+          <%= link_to "Logout", session_path(current_user.id), class: 'links', method: :delete %>
+          <p>ユーザー名: <%= current_user.name %></p>
         <% else %>
-        <button type="button" class="btn btn-default navbar-btn"> <%= link_to "Sign up", new_user_path %></button>
-        <button type="button" class="btn btn-default navbar-btn"> <%= link_to "Login", new_session_path %></button>
-        
-        
+          <%= link_to "Sign up", new_user_path, class: 'links' %>
+          <%= link_to "Login", new_session_path, class: 'links' %>
         <% end %>
-        <br>
-        <br>
-        
-      
-      </header> 
-      
+      </div>
+    </header>
+    <div class="content_area">
+      <div class="notification">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+      </div>
       <%= yield %>
-      
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      <footer>
-          <div class = "footer_place">
-            <p>Copyright © 2021 Tsuru feat.master_Oka  ALL RIGHTS RESERVED.</p>
-          </div>
-      </footer>
     </div>
+    <footer class="footer">
+      <p>Copyright © 2021 tsuruno.feat masterOKA ALL RIGHTS RESERVED.</p>
+    </footer>
   </body>
 </html>

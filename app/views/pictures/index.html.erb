@@ -1,31 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1>Home</h1>
 
-<h1>Home画面</h1>
-
-<table border = "3">
-  <thead>
-    <tr>
-      <th>投稿写真</th>
-      <th>つぶやき</th>
-     
-    </tr>
-  </thead>
-
-  <tbody class = "picture_size">
-    <% @pictures.each do |picture| %>
+<table>
+  <% @pictures.each do |picture| %>
+    <tbody>
+      <tr>
+        <td><%= picture.user.name %></td>
+      </tr>
+      <tr>
+        <td><%= picture.content %></td>
+      </tr>
+      <tr>
+        <td><%= image_tag(picture.image.url) %></td>
+      </tr>
+    </tbody>
+    <tfooter>
       <tr>
         <td>
-          <p class = "image_change"><%= image_tag picture.image.url %></p>
-          <td><%= picture.content %></td>
-          <%= hidden_field 'Edit', edit_picture_path(picture) %>
-          <%= hidden_field 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
+          <%= link_to 'Show', picture %>
+          <% if picture.user.id == current_user.id %>
+            <%= link_to 'Edit', edit_picture_path(picture) %>
+            <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tfooter>
 
-<br>
-<div class="btn-group" role="group" aria-label="...">
-<button type="button" class="btn btn-default"><%= link_to '新規投稿', new_picture_path %></button>
-</div>
+  <% end %>
+</table>
+<%= link_to '投稿する', new_picture_path %>

@@ -9,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="input_area">
     <%= form.label :content %>
     <%= form.text_area :content, placeholder: "What are you doing?" %>
@@ -18,9 +17,6 @@
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
     <br>
-  </div>
-  <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default"> <%= form.submit "投稿する" %></button>
-    <button type="button" class="btn btn-default"><%= link_to '戻る', pictures_path %></button>
+    <%= form.submit 'create new post', class: 'button' %>
   </div>
 <% end %>

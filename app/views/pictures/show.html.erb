@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @picture.image.url %>
+<strong>Content:</strong>
+<%= @picture.content %>
 </p>
-
+<br>
 <p>
-  <strong>Content:</strong>
-  <%= @picture.content %>
+<strong>Image:</strong>
+<%= image_tag @picture.image.url %>
 </p>
-
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<br>
+<div class="link_button1">
+<%= link_to 'Edit', edit_picture_path(@picture) %>
+<%= link_to 'Home', pictures_path %>
+</div>
