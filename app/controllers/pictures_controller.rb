@@ -14,10 +14,13 @@ class PicturesController < ApplicationController
   def edit
   end
 
+  def confirm
+    @picture = current_user.pictures.build(picture_params)
+    render :new if @picture.invalid?
+  end
+
   def create
-    @picture = Picture.new(picture_params)
-    # @user = User.new(current_user.id)
-    
+    @picture = current_user.pictures.build(picture_params)
     respond_to do |format|
       if @picture.save
         format.html { redirect_to @picture, notice: "Picture was successfully created." }
@@ -54,7 +57,15 @@ class PicturesController < ApplicationController
       @picture = Picture.find(params[:id])
     end
 
+    def ensure_correct_user
+      @picture = Picture.find(params[:id])
+      if @picture.user_id != current_user.id
+        flash[:notice] = "No authority"
+        redirect_to pictures_url
+      end
+    end
+
     def picture_params
-      params.require(:picture).permit(:image, :content)
+      params.require(:picture).permit(:image,:image_cache, :content, :user_id)
     end
 end

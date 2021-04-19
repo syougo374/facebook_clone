@@ -18,7 +18,7 @@ html {
   font-size: 62.5%;
   height: 100%;
   margin:0 ;
-  background-color: black;
+ 
 }
 body {
   height: 100%;
@@ -51,6 +51,7 @@ footer .footer_place{
   position: relative;
   min-height: 100%;
   padding: 0;
+  background-color: blackl;
 }
 /* header {
   background-color:rgb(182, 230, 236);

@@ -2,7 +2,7 @@
 
 <h1>Home画面</h1>
 
-<table>
+<table border = "3">
   <thead>
     <tr>
       <th>投稿写真</th>
@@ -15,11 +15,11 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td>
-          <%= image_tag picture.image.url %>
-          <p class = "size_change"><%= picture.content %></p>
+          <p class = "image_change"><%= image_tag picture.image.url %></p>
+          <td><%= picture.content %></td>
           <%= hidden_field 'Edit', edit_picture_path(picture) %>
           <%= hidden_field 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+          </td>
       </tr>
     <% end %>
   </tbody>
